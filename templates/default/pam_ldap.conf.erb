@@ -1,0 +1,8 @@
+uri    ldap://<%= node['openldap']['server'] %>
+base <%= node['openldap']['basedn'] %>
+ssl    no
+<% if node['openldap']['cafile'] -%>
+tls_cacertdir <%= node['openldap']['cafile'] %>
+<% end -%>
+pam_password md5
+

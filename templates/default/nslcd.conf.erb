@@ -7,7 +7,7 @@ uri ldap://<%= node['openldap']['server'] %>
 base <%= node['openldap']['basedn'] %>
 scope sub
 
-ssl start_tls
+ssl no 
 tls_reqcert demand
 <% if node['openldap']['cafile'] -%>
 tls_cacertfile <%= node['openldap']['cafile'] %>

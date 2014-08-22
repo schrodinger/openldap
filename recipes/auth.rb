@@ -70,3 +70,11 @@ cookbook_file "/etc/nsswitch.conf" do
   owner "root"
   group "root"
 end
+
+template "/etc/pam_ldap.conf" do
+source "pam_ldap.conf.erb"
+owner "root"
+group "root"
+mode 0644
+end
+
