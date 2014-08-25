@@ -1,0 +1,5 @@
+uri    ldap://<%= node['openldap']['server'] %>
+base <%= node['openldap']['basedn'] %>
+ssl    no
+pam_password md5
+
