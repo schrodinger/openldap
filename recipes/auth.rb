@@ -58,10 +58,11 @@ end
 template '/etc/nslcd.conf' do
   source 'nslcd.conf.erb'
   mode 0644
+  notifies :restart, "service[nslcd]"
 end
 
 service 'nslcd' do
-  action [:enable, :restart]
+  action [:enable, :start]
 end
 
 cookbook_file "/etc/nsswitch.conf" do
