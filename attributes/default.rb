@@ -41,6 +41,12 @@ when 'redhat', 'centos', 'amazon', 'scientific'
   default['openldap']['dir']                = '/etc/openldap'
   default['openldap']['run_dir']            = '/var/run/openldap'
   default['openldap']['module_dir']         = '/usr/lib64/openldap'
+when 'suse'
+  default['openldap']['packages']['client'] = %w{openldap2-client}
+  default['openldap']['packages']['auth']   = %w{pam_ldap nss_ldap}
+  default['openldap']['dir']                = '/etc/openldap'
+  default['openldap']['run_dir']            = '/var/run/openldap'
+  default['openldap']['module_dir']         = '/usr/lib/openldap'
 else
   default['openldap']['packages']['client'] = %w{ldap-utils}
   default['openldap']['packages']['auth']   = %w{libpam-ldapd libnss-ldapd}
