@@ -60,10 +60,10 @@ default['openldap']['tls_checkpeer'] = false
 default['openldap']['pam_password'] = 'md5'
 
 default['openldap']['manage_ssl'] = true
-default['openldap']['ssl_dir'] = "#{openldap['dir']}/ssl"
+default['openldap']['ssl_dir'] = "#{node['openldap']['dir']}/ssl"
 default['openldap']['cafile']  = nil
-default['openldap']['ssl_cert'] = "#{openldap['ssl_dir']}/#{openldap['server']}_cert.pem"
-default['openldap']['ssl_key'] = "#{openldap['ssl_dir']}/#{openldap['server']}.pem"
+default['openldap']['ssl_cert'] = "#{node['openldap']['ssl_dir']}/#{node['openldap']['server']}_cert.pem"
+default['openldap']['ssl_key'] = "#{node['openldap']['ssl_dir']}/#{node['openldap']['server']}.pem"
 
 default['openldap']['slapd_type'] = nil
 
@@ -79,7 +79,7 @@ default['openldap']['auth_filters'] = {}
 # Auth settings for Apache
 if node['openldap']['basedn'] && node['openldap']['server']
   default['openldap']['auth_type']   = "openldap"
-  default['openldap']['auth_binddn'] = "ou=people,#{openldap['basedn']}"
+  default['openldap']['auth_binddn'] = "ou=people,#{node['openldap']['basedn']}"
   default['openldap']['auth_bindpw'] = nil
-  default['openldap']['auth_url']    = "ldap://#{openldap['server']}/#{openldap['auth_binddn']}?uid?sub?(objectClass=*)"
+  default['openldap']['auth_url']    = "ldap://#{node['openldap']['server']}/#{node['openldap']['auth_binddn']}?uid?sub?(objectClass=*)"
 end
